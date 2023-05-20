@@ -1,6 +1,7 @@
 // Copyright 2021 NNTU-CS
 #ifndef INCLUDE_BST_H_
 #define INCLUDE_BST_H_
+#include <string>
 
 struct Token {
   int number;
@@ -24,13 +25,14 @@ static void AddNode(Token* new_node, Token* root) {
       root->left = new_node;
     else
       AddNode(new_node, root->left);
-    } else if (ToLeft(new_node, root) == -1) {
+  } else if (ToLeft(new_node, root) == -1) {
     if (root->right == nullptr)
       root->right = new_node;
     else
       AddNode(new_node, root->right);
-    } else if (ToLeft(new_node, root) == 0)
+  } else {
     root->number += 1;
+  }
 }
 
 int Depth(Token* root) {
