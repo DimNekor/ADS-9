@@ -15,7 +15,7 @@ static int ToLeft(const Token* t1, const Token* t2) {
     return 1;
   else if (t1->word > t2->word)
     return -1;
-  else if (t1->word == t2->word)
+  else
     return 0;
 }
 
