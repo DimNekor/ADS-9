@@ -22,12 +22,12 @@ BST<std::string> makeTree(const char* filename) {
       ch = tolower(ch);
       flag = false;
     }
-    if (ch == ' ' || ch == '\n' || ch == -1) {
+    if ((ch == ' ' || ch == '\n' || ch == -1) && tempStr != "") {
       flag = true;
       tree.AddToken(tempStr);
     }
     if (ch == '.' || ch == ',' || ch == ':' || ch == ';' || ch == '(' ||
-        ch == ')' || ch == '!' || ch == '?')
+        ch == ')' || ch == '!' || ch == '?' || ch == '-' || ch == '\"')
       flag2 = false;
     if (flag2) tempStr += ch;
     if (flag) tempStr = "";
