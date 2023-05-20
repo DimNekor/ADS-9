@@ -27,7 +27,7 @@ BST<std::string> makeTree(const char* filename) {
       tree.AddToken(tempStr);
     }
     if (ch == '.' || ch == ',' || ch == ':' || ch == ';' || ch == '(' ||
-        ch == ')' || ch == '!' || ch == '?' || ch == 'EOF')
+        ch == ')' || ch == '!' || ch == '?')
       flag2 = false;
     if (flag2) tempStr += ch;
     if (flag) tempStr = "";
