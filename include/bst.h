@@ -44,14 +44,6 @@ int Depth(Token* root) {
   else
     return RightTDepth + 1;
 }
-
-void go(Token* root) {
-    if (root == nullptr) return;
-    std::cout << root->word << " " << root->number << std::endl;
-    go(root->left);
-    go(root->right);
-}
-
 struct Token* Search(struct Token* root, std::string key) {
     if (root->word == key) return root;
     if (root->word < key) return Search(root->right, key);
