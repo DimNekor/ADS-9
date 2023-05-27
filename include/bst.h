@@ -36,17 +36,24 @@ static void AddNode(Token* new_node, Token* root) {
 }
 
 int Depth(Token* root) {
-    if (root == nullptr) return 0;
-    int LeftTDepth = Depth(root->left);
-    int RightTDepth = Depth(root->right);
-    if (LeftTDepth > RightTDepth)
+  if (root == nullptr) return 0;
+  int LeftTDepth = Depth(root->left);
+  int RightTDepth = Depth(root->right);
+  if (LeftTDepth > RightTDepth)
     return LeftTDepth + 1;
-    else
+  else
     return RightTDepth + 1;
 }
 
+void go(Token* root) {
+    if (root == nullptr) return;
+    std::cout << root->word << " " << root->number << std::endl;
+    go(root->left);
+    go(root->right);
+}
+
 struct Token* Search(struct Token* root, std::string key) {
-    if (root == nullptr || root->word == key) return root;
+    if (root->word == key) return root;
     if (root->word < key) return Search(root->right, key);
     return Search(root->left, key);
 }
@@ -59,6 +66,7 @@ class BST {
  public:
   BST();
   void AddToken(T);
+  Token* retToken();
   int depth();
   int search(std::string);
 };
@@ -87,8 +95,13 @@ inline void BST<T>::AddToken(T string) {
 }
 
 template <typename T>
+inline Token* BST<T>::retToken() {
+  return ptree;
+}
+
+template <typename T>
 inline int BST<T>::depth() {
-  return Depth(ptree);
+  return Depth(ptree) - 1;
 }
 
 template <typename T>
